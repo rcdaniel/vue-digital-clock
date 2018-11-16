@@ -1,13 +1,16 @@
 <template>
     <div class="html-clock">
-        <div class="hours">{{ hours }}</div>
+        <div :class="{
+            hours: true,
+            theme: theme
+            }">{{ hours }}</div>
         <div class="sep">:</div>
         <div class="minutes">{{ minutes }}</div>
         <div class="sep">:</div>
         <div class="seconds">{{ seconds }}</div>
         <div class="mode">:</div>
     </div>
-</template>a++
+</template>
 
 <style lang="postcss" scoped>
 .html-clock {
@@ -58,7 +61,9 @@ export default {
             this.hours = moment().format("H");
         }
     },
-    created () {setInterval(this.updateTime, 1000);},
+    mounted () {
+        setInterval(this.updateTime, 1000);
+    },
     watch: {}
 }
 </script>
